@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-background: #0A0A0A;
+  --color-surface: #111111;
+  --color-accent: #00FF88;
+  --color-muted: #A1A1AA;
+  --color-border: #1F2937;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white antialiased selection:bg-accent/30 selection:text-accent font-sans;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surface/40 backdrop-blur-xl border border-border/50;
+  }
+  
+  .glass-card {
+    @apply bg-surface/20 backdrop-blur-lg border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,136,0.1)];
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-b from-white to-muted;
+  }
+  
+  .text-gradient-accent {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent/50;
+  }
+
+  .grid-bg {
+    @apply bg-[linear-gradient(to_right,#1F2937_1px,transparent_1px),linear-gradient(to_bottom,#1F2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)];
+  }
+
+  .glow-mesh {
+    @apply absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,136,0.1),transparent_50%)];
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
